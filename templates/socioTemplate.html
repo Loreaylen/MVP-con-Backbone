@@ -4,13 +4,15 @@
   <p>Plan: <%= plan %> </p>
   <p>fecha de Nacimiento: <%= fechaNac %></p>
   <p>Afiliado desde: <%= fechaAlta %></p>
-  <p>Grupo familiar:  
+  <div>Grupo familiar:  
     <% if (familiares.length > 0) { %>
       <ul>
         <%for (let familiar of familiares) {%>
           <li><%= familiar.nombre%> (<%= familiar.relacion%>) </li>
         <%}%>
       </ul>
-    <% } else {'No tiene'}%>
-  </p>
+    <% } else { %>
+      <p>No tiene</p>
+      <%  }%>
+  </div>
 </article>

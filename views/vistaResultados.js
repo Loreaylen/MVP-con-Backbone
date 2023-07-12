@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html', '/model/socioModel.js', '/collections/socioCollection.js', '/views/vistaSocio.js', '/scripts/sociosEj.js'], function(Backbone,$,_, SocioTemplate, SocioModel, SocioCollection, VistaSocio, Socios){
+define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html', '/model/socioModel.js', '/collections/socioCollection.js', '/views/vistaSocio.js', '/scripts/sociosEj.js', '/events/formEvent.js'], function(Backbone,$,_, SocioTemplate, SocioModel, SocioCollection, VistaSocio, Socios, EventosForm){
   const vistaResultados = Backbone.View.extend({
     el: '#resultados',
     template: _.template($(SocioTemplate).html()),
@@ -6,6 +6,7 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       return this
     },
     initialize: function(){
+      EventosForm.bind('traerSociosPorNombre', this.traerSociosPorNombre)
       this.setAllSocios()
       this.render()
     },
@@ -25,7 +26,9 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
         })
         self.$el.append(nuevoSocio.el)
       })
-      console.log('se ejecuta getallsocios')
+    },
+    traerSociosPorNombre: function(){
+      console.log('se ejecutó traersociospornombre')
     }
   })
 
