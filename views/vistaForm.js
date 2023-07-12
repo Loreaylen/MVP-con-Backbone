@@ -24,7 +24,8 @@ events: {
 },
 buscarSocio: function(e){
   e.preventDefault()
-  EventosForm.trigger('traerSociosPorNombre')
+  const nombre = $('#inputBuscar').val()
+  EventosForm.trigger('traerSociosPorNombre', nombre)
 }
 })
 // Devuelvo la vista para que se pueda instanciar desde el router usando new.

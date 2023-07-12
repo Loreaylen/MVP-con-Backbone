@@ -27,8 +27,8 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
         self.$el.append(nuevoSocio.el)
       })
     },
-    traerSociosPorNombre: function(){
-      console.log('se ejecutó traersociospornombre')
+    traerSociosPorNombre: function(nombre){
+      console.log('se ejecutó traersociospornombre, el nombre es: ', nombre)
     }
   })
 
