@@ -6,7 +6,8 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       return this
     },
     initialize: function(){
-      EventosForm.bind('traerSociosPorNombre', this.traerSociosPorNombre)
+      // Repasar _.bind() y on()
+      EventosForm.on('traerSociosPorNombre', _.bind(this.traerSociosPorNombre, this))
       this.setAllSocios()
       this.render()
     },
@@ -17,10 +18,22 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       SocioCollection.add(nuevoSocio)
     }
     },
-    getAllSocios: function() {
+    getAllSocios: function(coleccion) {
       // self sirve para guardar el contexto actual dentro de una variable para usarlo dentro de each
       const self = this
-      SocioCollection.each(function(socio){
+      if(!coleccion){
+        self.$el.empty()
+        SocioCollection.each(function(socio){
+          const nuevoSocio = new VistaSocio({
+            model: socio
+          })
+          
+          self.$el.append(nuevoSocio.el)
+        })
+        return
+      }
+      self.$el.empty()
+      coleccion.each(function(socio){
         const nuevoSocio = new VistaSocio({
           model: socio
         })
@@ -28,7 +41,27 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       })
     },
     traerSociosPorNombre: function(nombre){
-      console.log('se ejecutó traersociospornombre, el nombre es: ', nombre)
+      if(nombre.length === 0){
+        this.getAllSocios()
+        return
+      }
+      else{
+      const patron = new RegExp(`.*${nombre}.*`, "i")
+      const sociosFiltrados =  _.filter(SocioCollection.models, function(el){
+        const nombreDelSocio = el.attributes.nombre
+          return !nombreDelSocio.search(patron)
+        })
+
+      const nuevaColeccion = new Backbone.Collection(sociosFiltrados)
+      if (nuevaColeccion.length === 0){
+        this.$el.empty()
+        this.$el.html('<p class="sinResultados">No hay resultados</p>')
+        return
+      }
+      this.getAllSocios(nuevaColeccion)
+      return
+      }
+     
     }
   })
 

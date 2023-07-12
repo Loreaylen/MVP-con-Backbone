@@ -85,6 +85,16 @@ define(function(){
         relacion: 'padre'
     }
       ]
+    },
+    {
+      id: '7',
+      nombre: 'Gustavo Silva',
+      nroSocio: '022 657 03 00 00',
+      fechaNac: '03/06/1995',
+      plan: 'PSM3',
+      fechaAlta: '21/10/2016',
+      familiares: []
+      
     }
   ]
 
