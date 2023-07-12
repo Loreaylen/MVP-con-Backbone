@@ -6,7 +6,7 @@ const socioModel = Backbone.Model.extend({
   fechaNac: '',
   plan: '',
   fechaAlta: '',
-  familiares: null
+  familiares: []
 })
 
   return socioModel

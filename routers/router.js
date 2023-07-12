@@ -8,7 +8,7 @@ cada ruta navega a un lugar  e inicializa la vista
 // definir la ruta del index para cargar el form y la vista vacía
 // tener en cuenta que define contiene un callback, por lo tanto lo que hay adentro son callbacks o variables
 
-define(['backbone','views/vistaForm.js'],function(Backbone, VistaForm){
+define(['backbone','views/vistaForm.js', 'views/vistaResultados.js'],function(Backbone, VistaForm, VistaResultados){
 
   const Rutas = Backbone.Router.extend({
     routes: {
@@ -17,7 +17,8 @@ define(['backbone','views/vistaForm.js'],function(Backbone, VistaForm){
 
     mostrarForm: function(){
       new VistaForm()
-    
+     const resultados = new VistaResultados()
+     resultados.getAllSocios()
     }
   })
   //Devuelvo la inicialización del router en forma de función separada
