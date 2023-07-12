@@ -1,0 +1,128 @@
+:root {
+  --color-principal: #C1121F;
+  --color-secundario:#FF99AC;
+  --color-claro: #fff;
+  --titulo: 'Montserrat', sans-serif;
+  --texto: 'Raleway', sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, #botonBuscarSocio {
+  font-family: var(--titulo);
+}
+
+p, span, li, label, strong {
+  font-family: var(--texto);
+}
+
+#contenedorPrincipal {
+padding: 15px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+gap:30px;
+}
+
+#formBuscarSocio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+input {
+height: 30px;
+width: 250px;
+}
+
+#botonBuscarSocio {
+  width: 80px;
+  background-color: var(--color-principal);
+  border: none;
+  border-radius: 5px;
+  color: var(--color-claro);
+  text-transform: uppercase;
+}
+
+#resultados {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.afiliado {
+  border: 1px solid var(--color-secundario);
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.afiliado > div {
+  max-width: 300px;
+}
+
+.afiliado > div > p {
+  margin:5px;
+}
+
+.afiliado h2 {
+  color: var(--color-principal);
+  text-transform: uppercase;
+}
+
+strong {
+  text-transform: capitalize;
+}
+
+.grupoFamiliar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.grupoFamiliar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.grupoFamiliar ul li {
+  list-style-type: none;
+}
+
+.sinResultados {
+  text-align: center;
+  font-size: 30px;
+  color: var(--color-principal)
+}

@@ -1,10 +1,14 @@
-<article>
+
   <h2><%- nombre %></h2>
-  <p>Afiliado nro: <%= nroSocio %></p>
-  <p>Plan: <%= plan %> </p>
-  <p>fecha de Nacimiento: <%= fechaNac %></p>
-  <p>Afiliado desde: <%= fechaAlta %></p>
-  <div>Grupo familiar:  
+  <div class="datosAfiliado">
+    <p><strong>Afiliado nro:</strong> <%= nroSocio %></p>
+    <p><strong>Plan:</strong> <%= plan %> </p>
+  </div>
+  <div class="fechas">
+    <p><strong>fecha de Nacimiento:</strong> <%= fechaNac %></p>
+    <p><strong>Afiliado desde:</strong> <%= fechaAlta %></p>
+  </div>
+  <div class="grupoFamiliar"><strong>Grupo familiar:</strong>  
     <% if (familiares.length > 0) { %>
       <ul>
         <%for (let familiar of familiares) {%>
@@ -15,4 +19,3 @@
       <p>No tiene</p>
       <%  }%>
   </div>
-</article>
