@@ -7,7 +7,10 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
     },
     initialize: function(){
       // Repasar _.bind() y on()
-      EventosForm.on('traerSociosPorNombre', _.bind(this.traerSociosPorNombre, this))
+      EventosForm.on('traerSociosPorNombre', _.bind(this.traerSociosPorNombre, this));
+      EventosForm.on('getAllSocios', _.bind(this.getAllSocios, this));
+      
+      
       this.setAllSocios()
       this.render()
     },
@@ -32,6 +35,7 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
         })
         return
       }
+
       self.$el.empty()
       coleccion.each(function(socio){
         const nuevoSocio = new VistaSocio({
@@ -41,11 +45,6 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       })
     },
     traerSociosPorNombre: function(nombre){
-      if(nombre.length === 0){
-        this.getAllSocios()
-        return
-      }
-      else{
       const patron = new RegExp(`.*${nombre}.*`, "i")
       const sociosFiltrados =  _.filter(SocioCollection.models, function(el){
         const nombreDelSocio = el.attributes.nombre
@@ -60,8 +59,6 @@ define(['backbone', 'jquery', 'underscore', 'text!/templates/socioTemplate.html'
       }
       this.getAllSocios(nuevaColeccion)
       return
-      }
-     
     }
   })
 
