@@ -20,12 +20,23 @@ initialize: function(){
   this.render()
 },
 events: {
-  'click #botonBuscarSocio': 'buscarSocio'
+  'click #botonBuscarSocio': 'buscarSocio',
+  'click #botonLimpiar': 'limpiar'
 },
 buscarSocio: function(e){
   e.preventDefault()
   const nombre = $('#inputBuscar').val()
+  if(nombre.length === 0){
+    $('.error').removeClass('invisible')
+    return
+  }
+  $('.error').addClass('invisible')
   EventosForm.trigger('traerSociosPorNombre', nombre)
+},
+limpiar: function(e){
+  e.preventDefault()
+  $('#inputBuscar').val('')
+  EventosForm.trigger('getAllSocios')
 }
 })
 // Devuelvo la vista para que se pueda instanciar desde el router usando new.
